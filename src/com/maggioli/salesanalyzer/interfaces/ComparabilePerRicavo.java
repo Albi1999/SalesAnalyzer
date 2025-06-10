@@ -1,3 +1,5 @@
+package com.maggioli.salesanalyzer.interfaces;
+
 public interface ComparabilePerRicavo {
     // Metodo astratto: restituisce un valore numerico che rappresenta il "ricavo" dell'oggetto.
     // Questo permette di confrontare diversi tipi di oggetti in base al loro contributo monetario.

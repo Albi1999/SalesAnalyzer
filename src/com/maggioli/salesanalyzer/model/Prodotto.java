@@ -1,6 +1,10 @@
+package com.maggioli.salesanalyzer.model;
+
+import com.maggioli.salesanalyzer.interfaces.Scontabile;
+
 import java.util.Objects;
 
-public class Prodotto implements Scontabile{
+public class Prodotto implements Scontabile {
     protected String idProdotto;
     protected String nome;
     protected String categoria;
@@ -41,7 +45,7 @@ public class Prodotto implements Scontabile{
 
     // Metodo per visualizzare i dettagli (utilizza i getter)
     public void visualizzaDettagli() {
-        System.out.println("ID Prodotto: " + getIdProdotto());
+        System.out.println("ID com.maggioli.salesanalyzer.model.Prodotto: " + getIdProdotto());
         System.out.println("Nome: " + getNome());
         System.out.println("Categoria: " + getCategoria());
         System.out.println("Prezzo base: " + String.format("%.2f", getPrezzoUnitario()) + " euro");
@@ -63,7 +67,7 @@ public class Prodotto implements Scontabile{
 
     @Override
     public String toString() {
-        return "Prodotto{" +
+        return "com.maggioli.salesanalyzer.model.Prodotto{" +
                 "idProdotto='" + idProdotto + '\'' +
                 ", nome='" + nome + '\'' +
                 ", categoria='" + categoria + '\'' +
@@ -75,7 +79,7 @@ public class Prodotto implements Scontabile{
 
 // Precedente implementazione come record
 
-//public record Prodotto(String idProdotto, String nome, String categoria, double prezzoUnitario) {
+//public record com.maggioli.salesanalyzer.model.Prodotto(String idProdotto, String nome, String categoria, double prezzoUnitario) {
 //    // I record in Java sono una forma compatta di classe che fornisce automaticamente
 //    // metodi come equals(), hashCode() e toString() basati sui campi definiti.
 //    // Non abbiamo bisogno di dichiarare esplicitamente i campi, i record li gestiscono automaticamente.
@@ -85,7 +89,7 @@ public class Prodotto implements Scontabile{
 //    // Possiamo aggiungere metodi personalizzati se necessario, come visualizzaDettagli
 //    // ma per i record, toString() generato automaticamente è sufficiente.
 //    public void visualizzaDettagli() {
-//        System.out.println("ID Prodotto: " + idProdotto());
+//        System.out.println("ID com.maggioli.salesanalyzer.model.Prodotto: " + idProdotto());
 //        System.out.println("Nome: " + nome());
 //        System.out.println("Categoria: " + categoria());
 //        // Formattazione del prezzo a due decimali usando String.format()
@@ -95,7 +99,7 @@ public class Prodotto implements Scontabile{
 //
 //    // Possiamo anche aggiungere costruttori "compatti" o "personalizzati" se serve validazione
 //    // Compact constructor per validazione (mostra l'uso di numeri e controllo)
-//    public Prodotto {
+//    public com.maggioli.salesanalyzer.model.Prodotto {
 //        // Valida che il prezzo unitario sia un numero positivo
 //        if (prezzoUnitario < 0.0) { // Qui usiamo il tipo primitivo double
 //            throw new IllegalArgumentException("Il prezzo unitario non può essere negativo.");

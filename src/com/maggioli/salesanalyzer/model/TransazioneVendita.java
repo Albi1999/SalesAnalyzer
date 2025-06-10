@@ -1,12 +1,18 @@
-import java.util.Objects;
+package com.maggioli.salesanalyzer.model;
 
-public class TransazioneVendita implements ComparabilePerRicavo{
+import com.maggioli.salesanalyzer.annotations.AnalisiDati;
+import com.maggioli.salesanalyzer.interfaces.ComparabilePerRicavo;
+
+import java.util.Objects;
+import java.util.List;
+
+public class TransazioneVendita implements ComparabilePerRicavo {
     private String idTransazione;
-    private Prodotto prodottoVenduto; // Attributo che è un oggetto della classe Prodotto
+    private Prodotto prodottoVenduto; // Attributo che è un oggetto della classe com.maggioli.salesanalyzer.model.Prodotto
     private int quantitaVenduta;
     private String dataVendita; // Formato "YYYY-MM"
 
-    // Costruttore della classe TransazioneVendita
+    // Costruttore della classe com.maggioli.salesanalyzer.model.TransazioneVendita
     public TransazioneVendita(String idTransazione, Prodotto prodottoVenduto, int quantitaVenduta, String dataVendita) {
         // Validazione dei numeri e stringhe
         if (quantitaVenduta <= 0) { // La quantità deve essere un numero intero positivo
@@ -21,7 +27,7 @@ public class TransazioneVendita implements ComparabilePerRicavo{
         this.dataVendita = dataVendita;
     }
 
-    // Metodi Getter per accedere agli attributi privati degli oggetti della classe TransazioneVendita
+    // Metodi Getter per accedere agli attributi privati degli oggetti della classe com.maggioli.salesanalyzer.model.TransazioneVendita
     public String getIdTransazione() { return idTransazione; }
     public Prodotto getProdottoVenduto() { return prodottoVenduto; }
     public int getQuantitaVenduta() { return quantitaVenduta; }
@@ -29,20 +35,20 @@ public class TransazioneVendita implements ComparabilePerRicavo{
 
     // Metodo (funzione della classe) per calcolare il ricavo della transazione
     public double calcolaRicavoTotale() {
-        // Accediamo al prezzo unitario del prodotto venduto della classe Prodotto
+        // Accediamo al prezzo unitario del prodotto venduto della classe com.maggioli.salesanalyzer.model.Prodotto
         return prodottoVenduto.getPrezzoUnitario() * getQuantitaVenduta();
     }
 
-    // Implementazione del metodo dell'interfaccia ComparabilePerRicavo
+    // Implementazione del metodo dell'interfaccia com.maggioli.salesanalyzer.interfaces.ComparabilePerRicavo
     @Override
     public double getValoreRicavo() {
         return calcolaRicavoTotale(); // Il valore per il confronto è il ricavo totale della transazione
     }
 
-    // Metodo per visualizzare i dettagli della transazione usando i getter e i record della classe Prodotto
+    // Metodo per visualizzare i dettagli della transazione usando i getter e i record della classe com.maggioli.salesanalyzer.model.Prodotto
     public void visualizzaDettagliTransazione() {
         System.out.println("ID Transazione: " + getIdTransazione());
-        System.out.println("Prodotto: " + getProdottoVenduto().nome + " (ID: " + getProdottoVenduto().idProdotto + ")");
+        System.out.println("com.maggioli.salesanalyzer.model.Prodotto: " + getProdottoVenduto().nome + " (ID: " + getProdottoVenduto().idProdotto + ")");
         System.out.println("Quantità: " + getQuantitaVenduta());
         System.out.println("Data: " + getDataVendita());
         // Formattazione del ricavo totale a due decimali
@@ -55,7 +61,7 @@ public class TransazioneVendita implements ComparabilePerRicavo{
         if (this == o) return true;
         // Controllo per verificare se l'altro oggetto è null o non è dello stesso tipo
         if (o == null || getClass() != o.getClass()) return false;
-        // Cast dell'oggetto generico 'o' a TransazioneVendita
+        // Cast dell'oggetto generico 'o' a com.maggioli.salesanalyzer.model.TransazioneVendita
         TransazioneVendita that = (TransazioneVendita) o;
         // Confronto degli attributi che definiscono l'uguaglianza logica
         // Si utilizza il metodo Objects.equals() per gestire correttamente i casi in cui gli attributi sono null
@@ -70,7 +76,7 @@ public class TransazioneVendita implements ComparabilePerRicavo{
 
     @Override
     public String toString() {
-        return "TransazioneVendita{" +
+        return "com.maggioli.salesanalyzer.model.TransazioneVendita{" +
                 "idTransazione='" + idTransazione + '\'' +
                 ", prodottoNome='" + prodottoVenduto.nome + '\'' + // Ci serve solo il nome del prodotto, non l'oggetto completo
                 ", quantitaVenduta=" + quantitaVenduta +
@@ -91,5 +97,18 @@ public class TransazioneVendita implements ComparabilePerRicavo{
     public int getMeseVendita() {
         String meseString = dataVendita.substring(5, 7); // Prende i caratteri dal 5° al 7° (il mese)
         return Integer.parseInt(meseString);
+    }
+
+    @AnalisiDati(descrizione = "Calcola il ricavo totale da una lista di transazioni", autore = "Alberto")
+    public static double calcolaRicavoTotaleLista(List<TransazioneVendita> listaDiTransazioni) {
+        double totaleRicavo = 0;
+        for (TransazioneVendita trans : listaDiTransazioni) {
+            totaleRicavo += trans.calcolaRicavoTotale();
+        }
+        return totaleRicavo;
+    }
+
+    public String getCategoriaProdotto() {
+        return this.prodottoVenduto.getCategoria();
     }
 }

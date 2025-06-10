@@ -1,10 +1,12 @@
-public class ProdottoFisico extends Prodotto { // 'extends Prodotto' indica l'ereditarietà
+package com.maggioli.salesanalyzer.model;
+
+public class ProdottoFisico extends Prodotto { // 'extends com.maggioli.salesanalyzer.model.Prodotto' indica l'ereditarietà
     public double pesoKG;
     public double dimensioniCM; // Lunghezza, larghezza, altezza in cm e combinate
 
-    // Costruttore specifico per la sottoclasse ProdottoFisico
+    // Costruttore specifico per la sottoclasse com.maggioli.salesanalyzer.model.ProdottoFisico
     public ProdottoFisico(String idProdotto, String nome, String categoria, double prezzoUnitario, double pesoKG, double dimensioniCM) {
-        super(idProdotto, nome, categoria, prezzoUnitario); // Chiama il costruttore della superclasse Prodotto per inizializzare gli attributi ereditati
+        super(idProdotto, nome, categoria, prezzoUnitario); // Chiama il costruttore della superclasse com.maggioli.salesanalyzer.model.Prodotto per inizializzare gli attributi ereditati
         // È la prima istruzione obbligatoria in un costruttore di sottoclasse se la superclasse non ha un costruttore senza parametri.
         if (pesoKG < 0.0) {
             throw new IllegalArgumentException("Il peso non può essere negativo.");
