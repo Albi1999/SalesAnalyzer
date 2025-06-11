@@ -1,7 +1,7 @@
 package com.maggioli.salesanalyzer.interfaces;
 
 public interface Scontabile {
-    // Metodo astratto: una classe che implementa com.maggioli.salesanalyzer.interfaces.Scontabile DEVE fornire l'implementazione di questo metodo.
+    // Metodo astratto: una classe che implementa Scontabile DEVE fornire l'implementazione di questo metodo.
     // È implicitamente public e abstract.
     void applicaSconto(double percentualeSconto);
 

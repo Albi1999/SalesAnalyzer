@@ -5,12 +5,12 @@ public class ProdottoDigitale extends Prodotto {
     public double dimensioneMB;
 
     public ProdottoDigitale(String idProdotto, String nome, String categoria, double prezzoUnitario, String formatoFile, double dimensioneMB) {
-        super(idProdotto, nome, categoria, prezzoUnitario); // Chiama il costruttore della superclasse com.maggioli.salesanalyzer.model.Prodotto per inizializzare gli attributi ereditati
+        super(idProdotto, nome, categoria, prezzoUnitario); // Chiama il costruttore della superclasse Prodotto per inizializzare gli attributi ereditati
         this.formatoFile = formatoFile;
         this.dimensioneMB = dimensioneMB;
     }
 
-    // Metodo specifico per com.maggioli.salesanalyzer.model.ProdottoDigitale
+    // Metodo specifico per ProdottoDigitale
     public double calcolaCostoDownload() {
         return 0.1 + (dimensioneMB * 0.001);
     }
